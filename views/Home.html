@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Home</title>
+
+    <script src="JavaScript.js"></script>
+
+    <style>
+
+        h1{
+            width:100%;
+            height:10%;
+            font-size: 50pt;
+            color: white;
+            text-align: center;
+            padding-top: 4%;
+            padding-bottom: 2%;
+            margin-top: 0%;
+            margin-bottom: 7%;
+        }
+
+        body{
+            margin: 0%;
+            background-color: rgb(34, 34, 34)
+        }
+
+        .resultDivision{
+            background-color: rgb(38, 91, 141)  ;
+            color: aliceblue;
+            border-radius:20pt;
+            width: 30%;
+            padding: 2%;
+            text-align: left;
+            font-size: 18pt;
+            margin-top: 4%;
+            
+        }
+
+        .actionButtons{
+            background-color: rgb(44, 224, 83);
+            border-color: rgb(44, 224, 83);
+            width: 35pt;
+            height: 35pt;
+            border-radius: 18pt;
+            font-size: 25pt;
+            text-align: center;
+        }
+
+        button.actionButtons:hover{
+            background-color: rgb(38, 91, 141);
+            color:white;        }
+
+        span.actions{
+            color: white;
+            margin: 5pt;
+            font-size: 15pt;
+            background-color:rgb(44, 224, 83);
+            border-radius: 20pt;
+            padding:3pt;
+            padding-left: 10pt;
+            padding-right: 10pt;
+        }
+        
+
+    </style>
+
+</head>
+
+<body>
+    <h1>TOLLBOOTH</h1>
+    <center>
+    <div >
+        <button class="actionButtons" onclick="subCarPaid()">-</button>
+        <span class="actions">PAID - CARS PASSED</span>
+        <button class="actionButtons" style="margin-right:50pt;" onclick="addCarPaid()">+</button>
+        <button class="actionButtons" onclick="subCarNotPaid()">-</button>
+        <span class="actions">NOT PAID - CARS PASSED</span>
+        <button class="actionButtons" onclick="addCarNotPaid()">+</button>
+    </div> 
+    </center> 
+    <br><br>
+    <center>
+    <div class="resultDivision">
+        <span>Total Amount: </span><span class="result" id="totalAmount"> 0 </span><br><br>
+        <span>Cars Not Paid: </span><span class="result" id="notPaid"> 0 </span><br><br>
+        <span>Total Cars Passed: </span><span class="result" id="totalCars"> 0 </span><br><br>
+    </div>
+    </center>
+</body>
+
+</html>
