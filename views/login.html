@@ -1,23 +1,85 @@
-{{ template "header" . }}
+<!DOCTYPE html>
+<html>
 
-<div class="notes_wrapper">
+<head>
+  <title>Job Form</title>
+  <style>
+ body{
+		 background-image: linear-gradient(to right, rgba(9,41,12,0.65), rgba(255,40,5,0.65));
+	}
+	
+	header{
+		background-color: rgba(9,41,12,0.4);
+		padding: 30px;
+		text-align: center;
+		font-size: 45px;
+		color: white;
+		border: 2px solid white;
+  	border-radius: 20px;
+	}
+	
+	form{
+    float: right;
+		background-color: #f1f1f1;
+		width:50%;
+		text-align:left;
+		padding:30px;
+		border: 2px solid;
+  	border-radius: 20px;
+	}
+	
+	
+    input[type=text],
+    input[type=date],
+    input[type=email],
+    input[type=password],
+    select {
+      width: 70%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
 
-  <div class="log_sign">
-    <a href="/signup" class="pri_btn">Need an account?</a>
-  </div>
+    select {
+      width: 300px;
+      height: 50px
+    }
 
-  <div class="register cua ">
-    <div class="display_text">
-      <span>Get started again</span>
+    .image2 {
+      width: 50px;
+      height: 50px;
+      margin-top: 20px;
+      margin-left: 20px
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <centre>
+      <h1>Sign In!</h1>
+    </centre>
+  </header>
+  <br>
+
+
+  </header>
+  <section>
+    <div>
+        <div class="image2">
+              <img src="sign-in.png" alt="Job" width=500px>
+        </div>  
+        <br>
+        <form action="/verify-user" method="POST">
+            Email ID:<br> <input type="email" name="email"><br>
+            Password:<br> <input type="password" name="password"><br><br>
+            <input type="submit" value="Login"><br><br>
+          </form>
+          
     </div>
-    <form class="form_login">
-      <input type="text" name="username" value="" class="l_username" autofocus required spellcheck="false" autocomplete='false'
-        placeholder='Username'>
-      <input type="password" name="password" value="" class="l_password" required placeholder='Password'>
-      <input type="submit" name="" value="Login to continue" class="l_submit">
-    </form>
-  </div>
-
-</div>
-
-{{ template "footer" }}
+  </section>
+</body>
+</html>
