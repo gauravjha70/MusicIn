@@ -1,93 +1,97 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-    <title>Home</title>
-
-    <script src="JavaScript.js"></script>
-
-    <style>
-
-        h1{
-            width:100%;
-            height:10%;
-            font-size: 50pt;
-            color: white;
-            text-align: center;
-            padding-top: 4%;
-            padding-bottom: 2%;
-            margin-top: 0%;
-            margin-bottom: 7%;
-        }
-
-        body{
-            margin: 0%;
-            background-color: rgb(34, 34, 34)
-        }
-
-        .resultDivision{
-            background-color: rgb(38, 91, 141)  ;
-            color: aliceblue;
-            border-radius:20pt;
-            width: 30%;
-            padding: 2%;
-            text-align: left;
-            font-size: 18pt;
-            margin-top: 4%;
-            
-        }
-
-        .actionButtons{
-            background-color: rgb(44, 224, 83);
-            border-color: rgb(44, 224, 83);
-            width: 35pt;
-            height: 35pt;
-            border-radius: 18pt;
-            font-size: 25pt;
-            text-align: center;
-        }
-
-        button.actionButtons:hover{
-            background-color: rgb(38, 91, 141);
-            color:white;        }
-
-        span.actions{
-            color: white;
-            margin: 5pt;
-            font-size: 15pt;
-            background-color:rgb(44, 224, 83);
-            border-radius: 20pt;
-            padding:3pt;
-            padding-left: 10pt;
-            padding-right: 10pt;
-        }
-        
-
-    </style>
-
+    <title>Social Network</title>
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
 </head>
-
 <body>
-    <h1>TOLLBOOTH</h1>
-    <center>
-    <div >
-        <button class="actionButtons" onclick="subCarPaid()">-</button>
-        <span class="actions">PAID - CARS PASSED</span>
-        <button class="actionButtons" style="margin-right:50pt;" onclick="addCarPaid()">+</button>
-        <button class="actionButtons" onclick="subCarNotPaid()">-</button>
-        <span class="actions">NOT PAID - CARS PASSED</span>
-        <button class="actionButtons" onclick="addCarNotPaid()">+</button>
-    </div> 
-    </center> 
-    <br><br>
-    <center>
-    <div class="resultDivision">
-        <span>Total Amount: </span><span class="result" id="totalAmount"> 0 </span><br><br>
-        <span>Cars Not Paid: </span><span class="result" id="notPaid"> 0 </span><br><br>
-        <span>Total Cars Passed: </span><span class="result" id="totalCars"> 0 </span><br><br>
+    <div class="container">
+    <div class="usernav">
+    
+    <ul> 
+        <li><a href="">Connection Requests</a></li><li><a href="">Profile</a></li><li><a href="">Connections</a></li><li><a href="">Home</a></li><li><a href="">Log Out</a></li>
+    </ul>
+    <div class="globalsearch">
+        <form method="get" action="" onsubmit="return validateField()"> 
+            <select name="location">
+                <option value="emails">Emails</option>
+                <option value="names">Names</option>
+                <option value="hometowns">Hometowns</option>
+                <option value="posts">Posts</option>
+            </select><input type="text" placeholder="Search" name="query" id="query"><input type="submit" value="Search" id="querybutton">
+        </form>
     </div>
-    </center>
-</body>
+</div>
 
+<script>
+function validateField(){
+    var query = document.getElementById("query");
+    var button = document.getElementById("querybutton");
+    if(query.value == "") {
+        query.placeholder = 'Type something!';
+        return false;
+    }
+    return true;
+}
+</script>
+        <br>
+        <div class="createpost">
+            <form method="post" action="" onsubmit="return validatePost()" enctype="multipart/form-data">
+                <h2>Make Post</h2>
+                <hr>
+                <span style="float:right; color:black">
+                <input type="checkbox" id="public" name="public">
+                <label for="public">Public</label>
+                </span>
+                Caption <span class="required" style="display:none;"> *You can't Leave the Caption Empty.</span><br>
+                <textarea rows="6" name="caption"></textarea>
+                <center><img src="" id="preview" style="max-width:580px; display:none;"></center>
+                <div class="createpostbuttons">
+                    <!--<form action="" method="post" enctype="multipart/form-data" id="imageform">-->
+                    <label>
+                        <img src="images/photo.png">
+                        <input type="file" name="fileUpload" id="imagefile">
+                        <!--<input type="submit" style="display:none;">-->
+                    </label>
+                    <input type="submit" value="Post" name="post">
+                    <!--</form>-->
+                </div>
+            </form>
+        </div>
+        <h1>News Feed</h1>
+        
+        <br><br><br>
+    </div>
+    <script src="resources/js/jquery.js"></script>
+    <script>
+        // Invoke preview when an image file is choosen.
+        $(document).ready(function(){
+            $('#imagefile').change(function(){
+                preview(this);
+            });
+        });
+        // Preview function
+        function preview(input){
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (event){
+                    $('#preview').attr('src', event.target.result);
+                    $('#preview').css('display', 'initial');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        // Form Validation
+        function validatePost(){
+            var required = document.getElementsByClassName("required");
+            var caption = document.getElementsByTagName("textarea")[0].value;
+            required[0].style.display = "none";
+            if(caption == ""){
+                required[0].style.display = "initial";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
 </html>

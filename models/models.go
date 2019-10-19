@@ -9,6 +9,12 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
+type UserSession struct {
+	Id        int
+	Email     string
+	TimeStamp string
+}
+
 func init() {
 
 	Db, Err := gorm.Open("mysql", beego.AppConfig.String("DbConnection"))
@@ -21,6 +27,7 @@ func init() {
 	log.Println("Connection to DB established....")
 
 	Db.AutoMigrate(&UserLogin{})
+	Db.AutoMigrate(&UserDetails{})
 	log.Println("Synced with DB.")
 
 }
